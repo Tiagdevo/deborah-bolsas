@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deborah de Jesus - Bolsas & Acessórios</title>
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #faf8f5; 
+            color: #222;
+            padding-bottom: 80px; 
+        }
+
+        /* Cabeçalho / Identidade da Marca */
+        header {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 50px 20px;
+            border-bottom: 3px solid #c5a880; 
+        }
+
+        header h1 {
+            font-size: 2.6rem;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        header p {
+            font-style: italic;
+            color: #b5b5b5;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background-color: #c5a880;
+            margin: 12px auto 0;
+        }
+
+        /* Vitrine de Produtos (Grid) */
+        .grid-produtos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* Card do Produto */
+        .card-produto {
+            background-color: #fff;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #eee;
+        }
+
+        .card-produto:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        /* Renderização das Fotos Reais */
+        .foto-produto {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            display: block;
+            background-color: #f0f0f0;
+        }
+
+        /* Informações do Produto */
+        .info-produto {
+            padding: 20px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .nome-produto {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .preco-produto {
+            font-size: 1.25rem;
+            color: #c5a880; 
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Botão Interativo */
+        .btn-comprar {
+            background-color: #111;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.2s, color 0.2s;
+            display: block;
+        }
+
+        .btn-comprar:hover {
+            background-color: #c5a880;
+            color: #fff;
+        }
+
+        /* Seção de Contato Direto */
+        .contato-secao {
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 50px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .contato-secao h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contato-secao p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .btn-whatsapp-direto {
+            display: inline-flex;
+            align-items: center;
+            background-color: #25D366;
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-whatsapp-direto:hover {
+            background-color: #1ebd58;
+            transform: scale(1.03);
+        }
+
+        .btn-whatsapp-direto svg {
+            margin-right: 10px;
+            width: 24px;
+            height: 24px;
+            fill: #fff;
+        }
+
+        /* Botão Flutuante do WhatsApp */
+        .wpp-flutuante {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+
+        .wpp-flutuante:hover {
+            transform: scale(1.1);
+            background-color: #1ebd58;
+        }
+
+        .wpp-flutuante svg {
+            width: 35px;
+            height: 35px;
+            fill: #fff;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #111;
+            color: #777;
+            text-align: center;
+            padding: 25px;
+            margin-top: 60px;
+            font-size: 0.85rem;
+            border-top: 2px solid #c5a880;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho da Loja -->
+    <header>
+        <h1>Deborah de Jesus</h1>
+        <p>Bolsas exclusivas que combinam com o seu estilo</p>
+    </header>
+
+    <!-- Corpo da Página -->
+    <div class="container">
+        
+        <!-- SEÇÃO R$ 80,00 -->
+        <h2 class="section-title">Coleção de R$ 80,00</h2>
+        <div class="grid-produtos">
+            
+            <!-- Produto 1 (Imagem: 1000694329.jpg) -->
+            <div class="card-produto">
+                <img src="1000694329.jpg" alt="Bolsa Texturizada com Alça de Mão e Ombro" class="foto-produto">
+                <div class="info-produto">
+                    <h3 class="nome-produto">Bolsa Texturizada Gold V</h3>
+                    <p class="preco-produto">R$ 80,00</p>
+                    <a href="https://wa.me/5521969351989?text=Olá!%20Vi%20no%20site%20e%20gostaria%20de%20comprar%20a%20Bolsa%20Texturizada%20Gold%20V%20por%20R$%2080,00." target="_blank" class="btn-comprar">Quero Esta</a>
+                </div>
+            </div>
+
+            <!-- Produto 2 (Imagem: 1000694328.jpg) -->
+            <div class="card-produto">
+                <img src="1000694328.jpg" alt="Modelos em Strass e Brilho" class="foto-produto">
+                <div class="info-produto">
+                    <h3 class="nome-produto">Bolsa Handbag Strass Glow</h3>
+                    <p class="preco-produto">R$ 80,00</p>
+                    <a href="https://wa.me/5521969351989?text=Olá!%20Vi%20no%20site%20e%20gostaria%20de%20comprar%20a%20Bolsa%20Handbag%20Strass%20Glow%20por%20R$%2080,00." target="_blank" class="btn-comprar">Quero Esta</a>
+                </div>
+            </div>
+
+            <!-- Produto 3 (Imagem: 1000694327.jpg) -->
+            <div class="card-produto">
+                <img src="1000694327.jpg" alt="Pochete Executiva com Strass de Paris" class="foto-produto">
+                <div class="info-produto">
+                    <h3 class="nome-produto">Pochete Luxury Paris Strass</h3>
+                    <p class="preco-produto">R$ 80,00</p>
+                    <a href="https://wa.me/5521969351989?text=Olá!%20Vi%20no%20site%20e%20gostaria%20de%20comprar%20a%20Pochete%20Luxury%20Paris%20Strass%20por%20R$%2080,00." target="_blank" class="btn-comprar">Quero Esta</a>
+                </div>
+            </div>
+
+            <!-- Produto 4 (Imagem: 1000694326.jpg) -->
+            <div class="card-produto">
+                <img src="1000694326.jpg" alt="Mochilas Nylon Casual" class="foto-produto">
+                <div class="info-produto">
+                    <h3 class="nome-produto">Mochila Casual Nylon Confort</h3>
+                    <p class="preco-produto">R$ 80,00</p>
+                    <a href="https://wa.me/5521969351989?text=Olá!%20Vi%20no%20site%20e%20gostaria%20de%20comprar%20a%20Mochila%20Casual%20Nylon%20Confort%20por%20R$%2080,00." target="_blank" class="btn-comprar">Quero Esta</a>
+                </div>
+            </div>
+
+            <!-- Produto 5 (Imagem: 1000694325.jpg) -->
+            <div class="card-produto">
+                <img src="1000694325.jpg" alt="Mini Bolsas de Mão" class="foto-produto">
+                <div class="info-produto">
+                    <h3 class="nome-produto">Mini Bolsa Satchel Concept</h3>
+                    <p class="preco-produto">R$ 80,00</p>
+                    <a href="https://wa.me/5521969351989?text=Olá!%20Vi%20no%20site%20e%20gostaria%20de%20comprar%20a%20Mini%20Bolsa%20Satchel%20Concept%20por%20R$%2080,00." target="_blank" class="btn-comprar">Quero Esta</a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- SEÇÃO R$ 110,00 -->
+        <h2 class="section-title">Coleção Premium - R$ 110,00</h2>
+        <div class="grid-produtos">
+            
+            <!-- Produto 6 (Imagem: 1000694351.jpg) -->
+            <div class="card-produto">
+                <img src="1000694351.jpg" alt="Bolsa Transversal Alça Bordada" class="foto-produto">
+                <div class="info-produto">
+                    <h3 class="nome-produto">Bolsa Transversal Sport Chic</h3>
+                    <p class="preco-produto">R$ 110,00</p>
+                    <a href="https://wa.me/5521969351989?text=Olá!%20Vi%20no%20site%20e%20gostaria%20de%20comprar%20a%20Bolsa%20Transversal%20Sport%20Chic%20por%20R$%20110,00." target="_blank" class="btn-comprar">Quero Esta</a>
+                </div>
+            </div>
+
+            <!-- Produto 7 (Imagem: 1000694350.jpg) -->
+            <div class="card-produto">
+                <img src="1000694350.jpg" alt="Mochila Impermeável Love" class="foto-produto">
+                <div class="info-produto">
+                    <h3 class="nome-produto">Mochila Waterproof Love Edition</h3>
+                    <p class="preco-produto">R$ 110,00</p>
+                    <a href="https://wa.me/5521969351989?text=Olá!%20Vi%20no%20site%20e%20gostaria%20de%20comprar%20a%20Mochila%20Waterproof%20Love%20Edition%20por%20R$%20110,00." target="_blank" class="btn-comprar">Quero Esta</a>
+                </div>
+            </div>
+
+            <!-- Produto 8 (Imagem: 1000694349.jpg) -->
+            <div class="card-produto">
+                <img src="1000694349.jpg" alt="Bolsa Executiva Texturizada com Detalhes de Metal" class="foto-produto">
+                <div class="info-produto">
+                    <h3 class="nome-produto">Bolsa Satchel Classic Elegance</h3>
+                    <p class="preco-produto">R$ 110,00</p>
+                    <a href="https://wa.me/5521969351989?text=Olá!%20Vi%20no%20site%20e%20gostaria%20de%20comprar%20a%20Bolsa%20Satchel%20Classic%20Elegance%20por%20R$%20110,00." target="_blank" class="btn-comprar">Quero Esta</a>
+                </div>
+            </div>
+
+            <!-- Produto 9 (Imagem: 1000694348.jpg) -->
+            <div class="card-produto">
+                <img src="1000694348.jpg" alt="Bolsa de Palha com Aba de Couro" class="foto-produto">
+                <div class="info-produto">
+                    <h3 class="nome-produto">Bolsa Handbag Summer Straw</h3>
+                    <p class="preco-produto">R$ 110,00</p>
+                    <a href="https://wa.me/5521969351989?text=Olá!%20Vi%20no%20site%20e%20gostaria%20de%20comprar%20a%20Bolsa%20Handbag%20Summer%20Straw%20por%20R$%20110,00." target="_blank" class="btn-comprar">Quero Esta</a>
+                </div>
+            </div>
+
+            <!-- Produto 10 (Imagem: 1000694347.jpg) -->
+            <div class="card-produto">
+                <img src="1000694347.jpg" alt="Bolsa de Ombro com Lenço na Alça" class="foto-produto">
+                <div class="info-produto">
+                    <h3 class="nome-produto">Bolsa Flap com Lenço Grace</h3>
+                    <p class="preco-produto">R$ 110,00</p>
+                    <a href="https://wa.me/5521969351989?text=Olá!%20Vi%20no%20site%20e%20gostaria%20de%20comprar%20a%20Bolsa%20Flap%20com%20Lenço%20Grace%20por%20R$%20110,00." target="_blank" class="btn-comprar">Quero Esta</a>
+                </div>
+            </div>
+
+            <!-- Produto 11 (Imagem: 1000694346.jpg) -->
+            <div class="card-produto">
+                <img src="1000694346.jpg" alt="Mochila de Veludo Cotelê Colorida" class="foto-produto">
+                <div class="info-produto">
+                    <h3 class="nome-produto">Mochila Urban Corduroy</h3>
+                    <p class="preco-produto">R$ 110,00</p>
+                    <a href="https://wa.me/5521969351989?text=Olá!%20Vi%20no%20site%20e%20gostaria%20de%20comprar%20a%20Mochila%20Urban%20Corduroy%20por%20R$%20110,00." target="_blank" class="btn-comprar">Quero Esta</a>
+                </div>
+            </div>
+
+            <!-- Produto 12 (Imagens: 1000694344.jpg / 1000694341.jpg) -->
+            <div class="card-produto">
+                <img src="1000694344.jpg" alt="Bolsa Baú Shandi Daishu" class="foto-produto">
+                <div class="info-produto">
+                    <h3 class="nome-produto">Bolsa Baú Shandi Daishu</h3>
+                    <p class="preco-produto">R$ 110,00</p>
+                    <a href="https://wa.me/5521969351989?text=Olá!%20Vi%20no%20site%20e%20gostaria%20de%20comprar%20a%20Bolsa%20Baú%20Shandi%20Daishu%20por%20R$%20110,00." target="_blank" class="btn-comprar">Quero Esta</a>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Seção de Contato -->
+        <div class="contato-secao">
+            <h3>Fale Conosco</h3>
+            <p>Deseja fazer um pedido personalizado ou tirar dúvidas? Chame a Deborah direto no WhatsApp!</p>
+            <a href="https://wa.me/5521969351989?text=Olá,%20Deborah!%20Achei%20seu%20site%20muito%20lindo%20e%20gostaria%20de%20tirar%20unas%20dúvidas." target="_blank" class="btn-whatsapp-direto">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12.004 2c-5.51 0-9.993 4.483-9.993 9.993 0 1.763.457 3.49 1.329 5.024L2 22l5.13-1.346c1.486.81 3.162 1.24 4.87 1.24 5.51 0 9.993-4.483 9.993-9.994C21.997 6.483 17.514 2 12.004 2zm5.82 14.19c-.24.673-1.187 1.312-1.636 1.397-.44.083-.984.148-2.91-.617-2.464-.978-4.043-3.486-4.165-3.65-.122-.164-1.02-1.353-1.02-2.582 0-1.228.643-1.834.87-2.077.225-.244.49-.305.652-.305.163 0 .326.002.468.008.148.007.348-.056.544.417.2.484.686 1.673.747 1.796.06.122.1.265.02.428-.082.163-.122.265-.245.408-.122.143-.257.32-.367.43-.122.12-.25.253-.107.5.143.245.635 1.047 1.362 1.695.937.834 1.728 1.093 1.973 1.215.244.122.387.102.53-.06.142-.164.61-.714.773-.958.164-.244.327-.204.55-.122.224.082 1.42.67 1.664.793.245.122.408.183.468.285.06.102.06.59-.18 1.264z"/>
+                </svg>
+                Chamar no WhatsApp (96935-1989)
+            </a>
+        </div>
+    </div>
+
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/5521969351989?text=Olá,%20Deborah!%20Gostaria%20de%20ver%20seus%20modelos%20de%20bolsas." target="_blank" class="wpp-flutuante" title="Fale Conosco">
+        <svg viewBox="0 0 24 24">
+            <path d="M12.004 2c-5.51 0-9.993 4.483-9.993 9.993 0 1.763.457 3.49 1.329 5.024L2 22l5.13-1.346c1.486.81 3.162 1.24 4.87 1.24 5.51 0 9.993-4.483 9.993-9.994C21.997 6.483 17.514 2 12.004 2zm5.82 14.19c-.24.673-1.187 1.312-1.636 1.397-.44.083-.984.148-2.91-.617-2.464-.978-4.043-3.486-4.165-3.65-.122-.164-1.02-1.353-1.02-2.582 0-1.228.643-1.834.87-2.077.225-.244.49-.305.652-.305.163 0 .326.002.468.008.148.007.348-.056.544.417.2.484.686 1.673.747 1.796.06.122.1.265.02.428-.082.163-.122.265-.245.408-.122.143-.257.32-.367.43-.122.12-.25.253-.107.5.143.245.635 1.047 1.362 1.695.937.834 1.728 1.093 1.973 1.215.244.122.387.102.53-.06.142-.164.61-.714.773-.958.164-.244.327-.204.55-.122.224.082 1.42.67 1.664.793.245.122.408.183.468.285.06.102.06.59-.18 1.264z"/>
+        </svg>
+    </a>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 Deborah de Jesus. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
